@@ -32,6 +32,7 @@ letsencrypt_acme_revoke() {
     -p "$acme_port:$acme_port" \
     -v "$host_config_dir:/certs" \
     --network shared_dokku_bridge \
+    --name=dokku_letsencrypt_container \
     "${PLUGIN_IMAGE}:${PLUGIN_IMAGE_VERSION}" \
     "${config[@]}" revoke | sed "s/^/       /"
 
