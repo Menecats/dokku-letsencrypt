@@ -98,6 +98,7 @@ letsencrypt_acme() {
     --user $DOKKU_UID:$DOKKU_GID \
     -p "$acme_port:$acme_port" \
     -v "$host_config_dir:/certs" \
+    --network shared_dokku_bridge \
     "${PLUGIN_IMAGE}:${PLUGIN_IMAGE_VERSION}" \
     "${config[@]}" run | sed "s/^/       /"
 
